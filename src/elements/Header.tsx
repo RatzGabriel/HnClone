@@ -1,8 +1,15 @@
-import * as React from "react";
+import React,{useState} from "react";
 
-export interface HeaderProps {}
+export interface HeaderProps {
+  onInputRequest: Function;
+}
 
-const Header: React.FC<HeaderProps> = () => {
+const Header: React.FC<HeaderProps> = ({ onInputRequest }) => {
+
+    const []
+
+
+
   return (
     <div>
       <div>
@@ -10,10 +17,12 @@ const Header: React.FC<HeaderProps> = () => {
         <h2>Hacker News</h2>
       </div>
       <div>
-        <input
-          type="text"
-          placeholder="Search stories by title,url or author"
-        />
+        <form onSubmit={()=>}>
+          <input
+            type="text"
+            placeholder="Search stories by title,url or author"
+          />
+        </form>
       </div>
       <div>
         <h2>Settings</h2>
