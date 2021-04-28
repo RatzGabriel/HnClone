@@ -6,6 +6,8 @@ const Api = (searchTerm: string) => {
     .then((response) => {
       return response;
     });
+  console.log(apiResponse);
+
   return apiResponse;
 };
 
