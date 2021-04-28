@@ -1,14 +1,16 @@
-import React,{useState} from "react";
+import React, { FormEvent, useState } from "react";
 
 export interface HeaderProps {
   onInputRequest: Function;
 }
 
 const Header: React.FC<HeaderProps> = ({ onInputRequest }) => {
+  const [text, setText] = useState("");
 
-    const []
-
-
+  const onInputChange = (input: FormEvent) => {
+    input.preventDefault();
+    onInputRequest(text);
+  };
 
   return (
     <div>
@@ -17,11 +19,13 @@ const Header: React.FC<HeaderProps> = ({ onInputRequest }) => {
         <h2>Hacker News</h2>
       </div>
       <div>
-        <form onSubmit={()=>}>
+        <form onSubmit={(e) => onInputChange(e)}>
           <input
+            onChange={(e) => setText(e.target.value)}
             type="text"
             placeholder="Search stories by title,url or author"
           />
+          <button type="submit">Search</button>
         </form>
       </div>
       <div>
