@@ -39,7 +39,7 @@ const SingleArticle: React.FC<SingleArticleProps> = (props) => {
           {searchResultArray.map((items: any, index: any) => {
             if (items._tags[0] === "story") {
               return (
-                <div>
+                <div key={index}>
                   <p>{items.title}</p>
                 </div>
               );
@@ -52,7 +52,11 @@ const SingleArticle: React.FC<SingleArticleProps> = (props) => {
         <div>
           {searchResultArray.map((items: any, index: any) => {
             if (items._tags[0] === "comments") {
-              return <p>{items.title}</p>;
+              return (
+                <div key={index}>
+                  <p>{items.title}</p>
+                </div>
+              );
             }
           })}
         </div>
@@ -76,18 +80,6 @@ const SingleArticle: React.FC<SingleArticleProps> = (props) => {
             <option value="all">All</option>
             <option value="stories">Stories</option>
             <option value="comments">Comments</option>
-          </select>
-          <select name="" id="">
-            <option value="popularity">Popularity</option>
-            <option value="date">Date</option>
-          </select>
-          <select name="" id="">
-            <option value="popularity">All time</option>
-            <option value="24h">Last 24h</option>
-            <option value="week">Past Week</option>
-            <option value="month">Past Month</option>
-            <option value="year">Past Year</option>
-            <option value="custom">Custom range</option>
           </select>
         </div>
         {arrayMap(filter)}

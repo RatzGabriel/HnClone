@@ -3,6 +3,8 @@ import StateService from "./StateService";
 import "./App.css";
 import Header from "./elements/Header";
 import Footer from "./elements/Footer";
+import Settings from "./elements/Settings";
+import RouterClass from "./components/Router";
 
 function App() {
   const [searchTerm, setSearchTerm] = useState<any>();
@@ -15,6 +17,7 @@ function App() {
     <div className="App">
       <Header onInputRequest={onInputRequest} />
       <StateService searchTerm={searchTerm} />
+      <Settings />
       <Footer />
     </div>
   );
