@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 export interface SingleArticleProps {
   searchData: any;
@@ -6,6 +6,59 @@ export interface SingleArticleProps {
 
 const SingleArticle: React.FC<SingleArticleProps> = (props) => {
   const searchResultArray = props.searchData;
+  const [filter, setFilter] = useState("all");
+
+  const onSelectChange = (e: any) => {
+    e === "all"
+      ? setFilter("all")
+      : e === "stories"
+      ? setFilter("stories")
+      : setFilter("comments");
+  };
+
+  const arrayMap = (filter: any) => {
+    if (filter === "all") {
+      return searchResultArray.map((items: any, index: any) => {
+        return (
+          <div key={index}>
+            <div>
+              <p>{items._highlightResult.title.value}</p>
+              <p>{items._highlightResult.url.value}</p>
+            </div>
+            <div>
+              <p>{items.points}</p>
+              <p>{items.author}</p>
+              <p>{items.num_comments}</p>
+            </div>
+          </div>
+        );
+      });
+    } else if (filter === "stories") {
+      return (
+        <div>
+          {searchResultArray.map((items: any, index: any) => {
+            if (items._tags[0] === "story") {
+              return (
+                <div>
+                  <p>{items.title}</p>
+                </div>
+              );
+            }
+          })}
+        </div>
+      );
+    } else if (filter === "comments") {
+      return (
+        <div>
+          {searchResultArray.map((items: any, index: any) => {
+            if (items._tags[0] === "comments") {
+              return <p>{items.title}</p>;
+            }
+          })}
+        </div>
+      );
+    }
+  };
 
   if (searchResultArray === undefined) {
     return <div>Nothing to Show</div>;
@@ -15,7 +68,11 @@ const SingleArticle: React.FC<SingleArticleProps> = (props) => {
     return (
       <div>
         <div>
-          <select name="" id="">
+          <select
+            onChange={(e) => onSelectChange(e.target.value)}
+            name=""
+            id=""
+          >
             <option value="all">All</option>
             <option value="stories">Stories</option>
             <option value="comments">Comments</option>
@@ -33,21 +90,7 @@ const SingleArticle: React.FC<SingleArticleProps> = (props) => {
             <option value="custom">Custom range</option>
           </select>
         </div>
-        {searchResultArray.map((items: any, index: any) => {
-          return (
-            <div key={index}>
-              <div>
-                <p>{items._highlightResult.title.value}</p>
-                <p>{items._highlightResult.url.value}</p>
-              </div>
-              <div>
-                <p>{items.points}</p>
-                <p>{items.author}</p>
-                <p>{items.num_comments}</p>
-              </div>
-            </div>
-          );
-        })}
+        {arrayMap(filter)}
       </div>
     );
   } else {
