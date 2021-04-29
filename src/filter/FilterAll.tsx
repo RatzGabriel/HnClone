@@ -1,8 +1,19 @@
 import React from "react";
+import styled from "styled-components";
 
 export interface FilterAllProps {
   searchData: [];
 }
+
+const SingleDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+`;
+
+const PComment = styled.p`
+  padding-left: 1em;
+`;
 
 const FilterAll: React.FC<FilterAllProps> = ({ searchData }): any => {
   return searchData.map((items: any, index: any) => {
@@ -15,22 +26,24 @@ const FilterAll: React.FC<FilterAllProps> = ({ searchData }): any => {
     }
 
     if (items._highlightResult.url === undefined) {
-      itemzTitle = "";
+      itemzUrl = "";
     } else {
-      itemzTitle = items._highlightResult.url.value;
+      itemzUrl = items._highlightResult.url.value;
     }
 
     return (
       <div key={index}>
         <div>
           <p>{itemzTitle}</p>
-          <p>{itemzUrl}</p>
+          <a href={itemzUrl}>{itemzUrl}</a>
         </div>
-        <div>
-          <p>{items.points}</p>
-          <p>{items.author}</p>
-          <p>{items.num_comments}</p>
-        </div>
+        <SingleDiv>
+          <p>{items.points} Points</p>
+
+          <PComment> {items.author} </PComment>
+          <PComment>{items.num_comments} Comments</PComment>
+        </SingleDiv>
+        <hr />
       </div>
     );
   });
