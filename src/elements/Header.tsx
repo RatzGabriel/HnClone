@@ -1,8 +1,39 @@
 import React, { FormEvent, useState } from "react";
+import styled from "styled-components";
 
 export interface HeaderProps {
   onInputRequest: Function;
 }
+
+const Div = styled.div`
+  background-color: #ff812d;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+  height: 10vh;
+`;
+
+const A = styled.a`
+  text-decoration: none;
+  color: black;
+`;
+
+const InputSearchBar = styled.input`
+  width: 82em;
+  height: 4em;
+  text-align: center;
+`;
+
+const SearchBtn = styled.button`
+  padding: 1em;
+`;
+
+const DivColoumn = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 const Header: React.FC<HeaderProps> = ({ onInputRequest }) => {
   const [text, setText] = useState("");
@@ -13,25 +44,25 @@ const Header: React.FC<HeaderProps> = ({ onInputRequest }) => {
   };
 
   return (
-    <div>
-      <div>
+    <Div>
+      <DivColoumn>
         <h2>Search</h2>
         <h2>Hacker News</h2>
-      </div>
+      </DivColoumn>
       <div>
         <form onSubmit={(e) => onInputChange(e)}>
-          <input
+          <InputSearchBar
             onChange={(e) => setText(e.target.value)}
             type="text"
             placeholder="Search stories by title,url or author"
           />
-          <button type="submit">Search</button>
+          <SearchBtn type="submit">Search</SearchBtn>
         </form>
       </div>
       <div>
-        <h2>Settings</h2>
+        <A href="/setting">Settings</A>
       </div>
-    </div>
+    </Div>
   );
 };
 

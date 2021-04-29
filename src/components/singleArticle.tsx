@@ -1,14 +1,27 @@
 import React, { useState } from "react";
+import styled from "styled-components";
+import FilterAll from "../filter/FilterAll";
+
+const Div = styled.div`
+  background-color: red;
+`;
+
+const PTitle = styled.p`
+  font-size: 12px;
+`;
 
 export interface SingleArticleProps {
-  searchData: any;
+  searchData: [];
 }
+const SingleArticle: React.FC<SingleArticleProps> = ({ searchData }) => {
+  if (searchData === undefined) {
+    return null;
+  }
 
-const SingleArticle: React.FC<SingleArticleProps> = (props) => {
-  const searchResultArray = props.searchData;
+  const searchResultArray = searchData;
   const [filter, setFilter] = useState("all");
 
-  const onSelectChange = (e: any) => {
+  const onSelectChange = (e: string) => {
     e === "all"
       ? setFilter("all")
       : e === "stories"
@@ -16,23 +29,11 @@ const SingleArticle: React.FC<SingleArticleProps> = (props) => {
       : setFilter("comments");
   };
 
-  const arrayMap = (filter: any) => {
+  const arrayMap = (filter: string) => {
     if (filter === "all") {
-      return searchResultArray.map((items: any, index: any) => {
-        return (
-          <div key={index}>
-            <div>
-              <p>{items._highlightResult.title.value}</p>
-              <p>{items._highlightResult.url.value}</p>
-            </div>
-            <div>
-              <p>{items.points}</p>
-              <p>{items.author}</p>
-              <p>{items.num_comments}</p>
-            </div>
-          </div>
-        );
-      });
+      // return all
+
+      return FilterAll({ searchData });
     } else if (filter === "stories") {
       return (
         <div>
@@ -63,10 +64,6 @@ const SingleArticle: React.FC<SingleArticleProps> = (props) => {
       );
     }
   };
-
-  if (searchResultArray === undefined) {
-    return <div>Nothing to Show</div>;
-  }
 
   if (searchResultArray.length > 0) {
     return (
