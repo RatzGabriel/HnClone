@@ -1,17 +1,24 @@
 import React from "react";
+import styled from "styled-components";
+
+const Div = styled.div`
+  width: 80;
+`;
+
+const A = styled.a`
+  text-decoration: none;
+  padding-left: 1em;
+`;
 
 export interface FooterProps {}
 
 const Footer: React.FC<FooterProps> = () => {
   return (
     <div>
-      <a href="/about">About</a>
-      <a href="/setting">Setting</a>
-      <a href="/help">Help</a>
-      <a href="/api">API Documentation</a>
-      <a href="/news">Hacker News</a>
-      <a href="/fork">Fork/Contribute</a>
-      <a href="/">Cool</a>
+      <A href="/about">About</A>
+      <A href="/setting">Setting</A>
+      <A href="/help">Help</A>
+      <A href="/">Main</A>
     </div>
   );
 };

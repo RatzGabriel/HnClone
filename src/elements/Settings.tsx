@@ -1,11 +1,31 @@
 import React from "react";
 import Footer from "./Footer";
+import styled from "styled-components";
 
+const Div = styled.div`
+  background-color: #ff812d;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  height: 10vh;
+`;
+
+const DivAll = styled.div`
+  background-color: #ebe5d3;
+  width: 90%;
+  margin: 0 auto;
+  height: 100vh;
+`;
 export interface SettingsProps {}
 
 const Settings: React.FC<SettingsProps> = () => {
   return (
-    <div>
+    <DivAll>
+      <Div>
+        <h2>Search</h2>
+        <h2>Hacker News</h2>
+      </Div>
       <div>
         <p>Settings</p>
         <div>
@@ -53,7 +73,7 @@ const Settings: React.FC<SettingsProps> = () => {
         </div>
       </div>
       <Footer />
-    </div>
+    </DivAll>
   );
 };
 

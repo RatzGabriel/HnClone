@@ -28,7 +28,9 @@ function App() {
       <DivAll>
         <StateService searchTerm={searchTerm} />
       </DivAll>
-      <Footer />
+      <DivAll>
+        <Footer />
+      </DivAll>
     </Div>
   );
 }

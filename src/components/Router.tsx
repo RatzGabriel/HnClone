@@ -4,6 +4,7 @@ import App from "../App";
 import About from "../elements/About";
 import { createBrowserHistory } from "history";
 import Settings from "../elements/Settings";
+import Help from "../elements/Help";
 
 const history = createBrowserHistory();
 
@@ -14,6 +15,7 @@ const RouterClass: React.FC<any> = () => {
         <div>
           <Switch>
             <Route path="/about" component={About} />
+            <Route path="/help" component={Help} />
             <Route path="/setting" component={Settings} />
             <Route exact path="/" component={App} />
           </Switch>
