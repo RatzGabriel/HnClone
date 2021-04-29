@@ -27,12 +27,7 @@ const About: React.FC<AboutProps> = () => {
         </p>
       </div>
       <div>
-        <a href="#">Hacker News</a>
-        <a href="#">Algolia</a>
-        <a href="#">Firebase</a>
-        <a href="#">Octopart</a>
-        <a href="#">Algolia REST API</a>
-        <a href="#">AlgoliaSearch Rails</a>
+        <p>all links</p>
       </div>
       <Footer />
     </div>

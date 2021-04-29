@@ -1,68 +1,39 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
+import CommentsFilter from "../filter/Comments";
 import FilterAll from "../filter/FilterAll";
-
-const Div = styled.div`
-  background-color: red;
-`;
-
-const PTitle = styled.p`
-  font-size: 12px;
-`;
+import StoriesFilter from "../filter/Stories";
 
 export interface SingleArticleProps {
   searchData: [];
+  stateFilter: any;
+  filter: any;
 }
-const SingleArticle: React.FC<SingleArticleProps> = ({ searchData }) => {
+const SingleArticle: React.FC<SingleArticleProps> = ({
+  searchData,
+  stateFilter,
+  filter,
+}) => {
+  console.log(filter);
+
   if (searchData === undefined) {
     return null;
   }
 
   const searchResultArray = searchData;
-  const [filter, setFilter] = useState("all");
 
   const onSelectChange = (e: string) => {
-    e === "all"
-      ? setFilter("all")
-      : e === "stories"
-      ? setFilter("stories")
-      : setFilter("comments");
+    stateFilter(e);
   };
 
   const arrayMap = (filter: string) => {
     if (filter === "all") {
-      // return all
+      console.log("yep", searchData);
 
       return FilterAll({ searchData });
     } else if (filter === "stories") {
-      return (
-        <div>
-          {searchResultArray.map((items: any, index: any) => {
-            if (items._tags[0] === "story") {
-              return (
-                <div key={index}>
-                  <p>{items.title}</p>
-                </div>
-              );
-            }
-          })}
-        </div>
-      );
-    } else if (filter === "comments") {
-      return (
-        <div>
-          {searchResultArray.map((items: any, index: any) => {
-            if (items._tags[0] === "comments") {
-              return (
-                <div key={index}>
-                  <p>{items.title}</p>
-                </div>
-              );
-            }
-          })}
-        </div>
-      );
-    }
+      StoriesFilter({ searchResultArray });
+    } else CommentsFilter({ searchResultArray });
   };
 
   if (searchResultArray.length > 0) {

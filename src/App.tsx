@@ -1,7 +1,6 @@
 import "./App.css";
 import Footer from "./elements/Footer";
 import Header from "./elements/Header";
-import Settings from "./elements/Settings";
 import StateService from "./StateService";
 import styled from "styled-components";
 import React, { useState } from "react";
@@ -17,7 +16,7 @@ const DivAll = styled.div`
 `;
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState<any>();
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
   const onInputRequest = (input: string) => {
     setSearchTerm(input);

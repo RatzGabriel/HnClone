@@ -5,12 +5,26 @@ export interface FilterAllProps {
 }
 
 const FilterAll: React.FC<FilterAllProps> = ({ searchData }): any => {
-  const t = searchData.map((items: any, index: any) => {
+  return searchData.map((items: any, index: any) => {
+    let itemzTitle;
+    let itemzUrl;
+    if (items._highlightResult.title === undefined) {
+      itemzTitle = "";
+    } else {
+      itemzTitle = items._highlightResult.title.value;
+    }
+
+    if (items._highlightResult.url === undefined) {
+      itemzTitle = "";
+    } else {
+      itemzTitle = items._highlightResult.url.value;
+    }
+
     return (
       <div key={index}>
         <div>
-          <p>{items._highlightResult.title.value}</p>
-          <p>{items._highlightResult.url.value}</p>
+          <p>{itemzTitle}</p>
+          <p>{itemzUrl}</p>
         </div>
         <div>
           <p>{items.points}</p>
@@ -20,8 +34,6 @@ const FilterAll: React.FC<FilterAllProps> = ({ searchData }): any => {
       </div>
     );
   });
-  console.log("T", t);
-  return t;
 };
 
 export default FilterAll;
