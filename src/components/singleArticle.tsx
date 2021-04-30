@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import styled from "styled-components";
 import CommentsFilter from "../filter/Comments";
 import FilterAll from "../filter/FilterAll";
@@ -6,18 +6,16 @@ import StoriesFilter from "../filter/Stories";
 
 export interface SingleArticleProps {
   searchData: [];
-  stateFilter: any;
-  filter: any;
+  stateFilter: Function;
+  filter: string;
 }
 const SingleArticle: React.FC<SingleArticleProps> = ({
   searchData,
   stateFilter,
   filter,
-}) => {
-  console.log(filter);
-
+}): ReactElement => {
   if (searchData === undefined) {
-    return null;
+    return <div></div>;
   }
 
   const searchResultArray = searchData;
@@ -28,8 +26,6 @@ const SingleArticle: React.FC<SingleArticleProps> = ({
 
   const arrayMap = (filter: string) => {
     if (filter === "all") {
-      console.log("yep", searchData);
-
       return FilterAll({ searchData });
     } else if (filter === "stories") {
       StoriesFilter({ searchResultArray });
