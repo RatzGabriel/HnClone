@@ -16,9 +16,9 @@ const PComment = styled.p`
 `;
 
 const FilterAll: React.FC<FilterAllProps> = ({ searchData }): any => {
-  return searchData.map((items: any, index: any) => {
-    let itemzTitle;
-    let itemzUrl;
+  return searchData.map((items: any, index: number) => {
+    let itemzTitle: string;
+    let itemzUrl: string;
     if (items._highlightResult.title === undefined) {
       itemzTitle = "";
     } else {
@@ -40,7 +40,7 @@ const FilterAll: React.FC<FilterAllProps> = ({ searchData }): any => {
         <SingleDiv>
           <p>{items.points} Points</p>
 
-          <PComment> {items.author} </PComment>
+          <PComment> User:{items.author} </PComment>
           <PComment>{items.num_comments} Comments</PComment>
         </SingleDiv>
         <hr />

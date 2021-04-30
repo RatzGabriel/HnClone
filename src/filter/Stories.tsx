@@ -3,7 +3,9 @@ export interface StoriesFilterProps {
   searchResultArray: [];
 }
 
-const StoriesFilter: React.FC<StoriesFilterProps> = ({ searchResultArray }) => {
+const StoriesFilter: React.FC<StoriesFilterProps> = ({
+  searchResultArray,
+}): React.ReactElement => {
   return (
     <div>
       {searchResultArray.map((items: any, index: any) => {

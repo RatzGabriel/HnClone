@@ -2,8 +2,6 @@ import * as React from "react";
 import Footer from "../elements/Footer";
 import styled from "styled-components";
 
-export interface AboutProps {}
-
 const Div = styled.div`
   background-color: #ff812d;
   display: flex;
@@ -19,7 +17,7 @@ const DivAll = styled.div`
   margin: 0 auto;
   height: 100vh;
 `;
-const About: React.FC<AboutProps> = () => {
+const About: React.FC = (): React.ReactElement => {
   return (
     <DivAll>
       <Div>

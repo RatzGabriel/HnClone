@@ -1,6 +1,7 @@
-import React from "react";
-import styled from "styled-components";
 import Footer from "../elements/Footer";
+import styled from "styled-components";
+import React, { ReactElement } from "react";
+
 const Div = styled.div`
   background-color: #ff812d;
   display: flex;
@@ -17,9 +18,7 @@ const DivAll = styled.div`
   height: 100vh;
 `;
 
-export interface HelpProps {}
-
-const Help: React.FC<HelpProps> = () => {
+const Help: React.FC = (): ReactElement => {
   return (
     <DivAll>
       <Div>

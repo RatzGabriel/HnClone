@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import styled from "styled-components";
 
 const Div = styled.div`
@@ -10,9 +10,7 @@ const A = styled.a`
   padding-left: 1em;
 `;
 
-export interface FooterProps {}
-
-const Footer: React.FC<FooterProps> = () => {
+const Footer: React.FC = (): ReactElement => {
   return (
     <div>
       <A href="/about">About</A>
