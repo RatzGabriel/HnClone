@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import parse from "html-react-parser";
 
 export interface FilterAllProps {
   searchData: [];
@@ -34,13 +35,13 @@ const FilterAll: React.FC<FilterAllProps> = ({ searchData }): any => {
     return (
       <div key={index}>
         <div>
-          <p>{itemzTitle}</p>
+          <p>{parse(itemzTitle)}</p>
           <a href={itemzUrl}>{itemzUrl}</a>
         </div>
         <SingleDiv>
           <p>{items.points} Points</p>
 
-          <PComment> User:{items.author} </PComment>
+          <PComment> {items.author} </PComment>
           <PComment>{items.num_comments} Comments</PComment>
         </SingleDiv>
         <hr />

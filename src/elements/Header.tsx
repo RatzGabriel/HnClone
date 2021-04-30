@@ -32,7 +32,14 @@ const SearchBtn = styled.button`
 
 const DivColoumn = styled.div`
   display: flex;
+  font-size: small;
+
   flex-direction: column;
+  max-height: 100%;
+  h2 {
+    max-height: 100%;
+    font-size: 12px;
+  }
 `;
 
 const Header: React.FC<HeaderProps> = ({ onInputRequest }) => {

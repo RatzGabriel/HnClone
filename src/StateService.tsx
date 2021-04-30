@@ -8,7 +8,7 @@ export interface StateServiceProps {
 
 const StateService: React.FC<StateServiceProps> = ({ searchTerm }) => {
   const [searchData, setSearchData] = useState<[]>([]);
-  const [filter, setFilter] = useState("all");
+  const [filter, setFilter] = useState<string>("all");
 
   useEffect(() => {
     apiRequest("react");
@@ -18,7 +18,7 @@ const StateService: React.FC<StateServiceProps> = ({ searchTerm }) => {
     apiRequest(searchTerm);
   }, [searchTerm]);
 
-  const stateFilter = (e: any) => {
+  const stateFilter = (e: string) => {
     setFilter(e);
   };
 

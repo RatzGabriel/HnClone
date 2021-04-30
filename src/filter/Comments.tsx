@@ -10,8 +10,6 @@ const CommentsFilter: React.FC<CommentsFilterProps> = ({
   return (
     <div>
       {searchResultArray.map((items: any, index: number) => {
-        console.log("izems", items);
-
         if (items._tags[0] === "comments") {
           return (
             <div key={index}>
